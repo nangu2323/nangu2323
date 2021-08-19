@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-show和v-if的实现</title>
+    <style>
+      .box-wrapper {
+        width: 800px;
+        height: 200px;
+      }
+      .box {
+        float: left;
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        color: #fff;
+        font-size: 24px;
+      }
+
+      .box1 {
+        background-color: green;
+      }
+      .box2 {
+        background-color: orange;
+      }
+      .box3 {
+        background-color: red;
+      }
+      .box4 {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="box-wrapper">
+        <div class="box box1" v-if="boxShow1">box1</div>
+        <div class="box box2" v-show="boxShow2">box2</div>
+        <div class="box box3" v-if="boxShow3">box3</div>
+        <div class="box box4" v-show="boxShow4">box4</div>
+      </div>
+
+      <button @click="showBox1">box1</button>
+      <button @click="showBox2">box2</button>
+      <button @click="showBox3">box3</button>
+      <button @click="showBox4">box4</button>
+    </div>
+    <script src="vShowIf.js"></script>
+    <script>
+      new vShowIf({
+        el: '#app',
+        data: {
+          boxShow1: false,
+          boxShow2: false,
+          boxShow3: false,
+          boxShow4: false,
+        },
+        methods: {
+          showBox1() {
+            this.boxShow1 = !this.boxShow1;
+          },
+          showBox2() {
+            this.boxShow2 = !this.boxShow2;
+          },
+          showBox3() {
+            this.boxShow3 = !this.boxShow3;
+          },
+          showBox4() {
+            this.boxShow4 = !this.boxShow4;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
